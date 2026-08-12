@@ -1,98 +1,321 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <title>Home | Herick Chan</title>
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/font-awesome.min.css" rel="stylesheet">
-    <link href="css/animate.min.css" rel="stylesheet"> 
-    <link href="css/lightbox.css" rel="stylesheet"> 
-	<link href="css/main.css" rel="stylesheet">
-	<link href="css/responsive.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0d0d0c">
+    <meta
+      name="description"
+      content="Open Backloggy, a calm home for everything you want to play, watch, and read."
+    >
+    <title>Backloggy — Your next thing, sorted.</title>
+    <link rel="icon" href="/backloggy/icons/Icon-192.png">
+    <link rel="apple-touch-icon" href="/backloggy/icons/Icon-192.png">
+    <style>
+      @font-face {
+        font-family: "Space Grotesk";
+        src: url("/backloggy/assets/google_fonts/SpaceGrotesk-Regular.ttf") format("truetype");
+        font-weight: 400;
+        font-display: swap;
+      }
 
-    <!--[if lt IE 9]>
-	    <script src="js/html5shiv.js"></script>
-	    <script src="js/respond.min.js"></script>
-    <![endif]-->       
-</head><!--/head-->
+      @font-face {
+        font-family: "Space Grotesk";
+        src: url("/backloggy/assets/google_fonts/SpaceGrotesk-Bold.ttf") format("truetype");
+        font-weight: 700;
+        font-display: swap;
+      }
 
-<body>
-	<header id="header">      
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-12 overflow">
-                   <div class="social-icons pull-right">
-                        <ul class="nav nav-pills">
-                            <li><a href="https://www.facebook.com/herick.chan"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="https://bitbucket.org/herickchan/"><i class="fa fa-github"></i></a></li>
-                            <li><a href="https://www.linkedin.com/in/herickchan"><i class="fa fa-linkedin"></i></a></li>
-                            <li><a href="mailto:herick.chan@gmail.com"><i class="fa fa-envelope"></i></a></li>
-                        </ul>
-                    </div> 
-                </div>
-             </div>
+      @font-face {
+        font-family: "IBM Plex Mono";
+        src: url("/backloggy/assets/google_fonts/IBMPlexMono-Medium.ttf") format("truetype");
+        font-weight: 500;
+        font-display: swap;
+      }
+
+      :root {
+        color-scheme: dark;
+        --ink: #0d0d0c;
+        --paper: #f2efe9;
+        --muted: #a8a49b;
+        --line: rgba(242, 239, 233, 0.13);
+        --cyan: #26c5c9;
+        --yellow: #f5ca5b;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        min-width: 320px;
+        background: var(--ink);
+      }
+
+      body {
+        min-height: 100svh;
+        margin: 0;
+        overflow-x: hidden;
+        color: var(--paper);
+        background:
+          radial-gradient(circle at 18% 20%, rgba(38, 197, 201, 0.12), transparent 30rem),
+          radial-gradient(circle at 82% 82%, rgba(245, 202, 91, 0.1), transparent 28rem),
+          var(--ink);
+        font-family: "Space Grotesk", system-ui, sans-serif;
+      }
+
+      body::before {
+        position: fixed;
+        inset: 0;
+        z-index: -1;
+        background-image:
+          linear-gradient(var(--line) 1px, transparent 1px),
+          linear-gradient(90deg, var(--line) 1px, transparent 1px);
+        background-size: 72px 72px;
+        mask-image: linear-gradient(to bottom, black, transparent 82%);
+        opacity: 0.28;
+        content: "";
+      }
+
+      .page {
+        display: grid;
+        min-height: 100svh;
+        grid-template-rows: auto 1fr auto;
+        width: min(100% - 40px, 1120px);
+        margin-inline: auto;
+        padding-block: 28px;
+      }
+
+      .masthead,
+      .footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        color: var(--muted);
+        font-family: "IBM Plex Mono", ui-monospace, monospace;
+        font-size: 0.7rem;
+        letter-spacing: 0.13em;
+        text-transform: uppercase;
+      }
+
+      .wordmark {
+        color: var(--paper);
+        font-weight: 500;
+      }
+
+      .status {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .status::before {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: var(--cyan);
+        box-shadow: 0 0 14px rgba(38, 197, 201, 0.9);
+        content: "";
+      }
+
+      .hero {
+        display: grid;
+        place-items: center;
+        padding-block: 72px;
+      }
+
+      .hero-inner {
+        width: min(100%, 790px);
+        text-align: center;
+      }
+
+      .eyebrow {
+        margin: 0 0 20px;
+        color: var(--yellow);
+        font-family: "IBM Plex Mono", ui-monospace, monospace;
+        font-size: 0.72rem;
+        font-weight: 500;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+      }
+
+      h1 {
+        max-width: 760px;
+        margin: 0 auto;
+        font-size: clamp(3.1rem, 8vw, 6.8rem);
+        font-weight: 700;
+        letter-spacing: -0.065em;
+        line-height: 0.94;
+      }
+
+      .intro {
+        max-width: 590px;
+        margin: 28px auto 0;
+        color: var(--muted);
+        font-size: clamp(1rem, 2vw, 1.2rem);
+        line-height: 1.65;
+      }
+
+      .app-link {
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        align-items: center;
+        gap: 20px;
+        width: min(100%, 610px);
+        margin: 48px auto 0;
+        padding: 18px;
+        border: 1px solid var(--line);
+        border-radius: 25px;
+        color: inherit;
+        background: rgba(24, 24, 22, 0.82);
+        box-shadow: 0 28px 80px rgba(0, 0, 0, 0.34);
+        text-align: left;
+        text-decoration: none;
+        backdrop-filter: blur(18px);
+        transition:
+          transform 180ms ease,
+          border-color 180ms ease,
+          background-color 180ms ease,
+          box-shadow 180ms ease;
+      }
+
+      .app-link:hover {
+        transform: translateY(-4px);
+        border-color: rgba(38, 197, 201, 0.55);
+        background: rgba(29, 30, 27, 0.94);
+        box-shadow:
+          0 34px 90px rgba(0, 0, 0, 0.45),
+          0 0 0 1px rgba(38, 197, 201, 0.08) inset;
+      }
+
+      .app-link:focus-visible {
+        outline: 3px solid var(--yellow);
+        outline-offset: 5px;
+      }
+
+      .app-icon {
+        width: 82px;
+        height: 82px;
+        border-radius: 22px;
+        box-shadow: 0 16px 34px rgba(0, 0, 0, 0.38);
+      }
+
+      .app-name {
+        display: block;
+        margin-bottom: 5px;
+        font-size: 1.3rem;
+        font-weight: 700;
+        letter-spacing: -0.025em;
+      }
+
+      .app-description {
+        display: block;
+        color: var(--muted);
+        font-size: 0.9rem;
+        line-height: 1.45;
+      }
+
+      .arrow {
+        display: grid;
+        width: 44px;
+        height: 44px;
+        place-items: center;
+        border: 1px solid var(--line);
+        border-radius: 50%;
+        color: var(--ink);
+        background: var(--paper);
+        font-size: 1.35rem;
+        transition: transform 180ms ease;
+      }
+
+      .app-link:hover .arrow {
+        transform: translateX(3px);
+      }
+
+      .footer {
+        justify-content: center;
+        text-align: center;
+      }
+
+      @media (max-width: 600px) {
+        .page {
+          width: min(100% - 28px, 1120px);
+          padding-block: 20px;
+        }
+
+        .masthead {
+          font-size: 0.62rem;
+        }
+
+        .hero {
+          padding-block: 52px;
+        }
+
+        .app-link {
+          grid-template-columns: auto 1fr;
+          gap: 15px;
+          padding: 14px;
+          border-radius: 21px;
+        }
+
+        .app-icon {
+          width: 66px;
+          height: 66px;
+          border-radius: 18px;
+        }
+
+        .arrow {
+          display: none;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          scroll-behavior: auto !important;
+          transition-duration: 0.01ms !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <header class="masthead">
+        <span class="wordmark">Herick</span>
+        <span class="status">Available on the web</span>
+      </header>
+
+      <section class="hero" aria-labelledby="page-title">
+        <div class="hero-inner">
+          <p class="eyebrow">Your next thing, sorted</p>
+          <h1 id="page-title">Meet Backloggy.</h1>
+          <p class="intro">
+            A calm home for every game, film, show, book, manga, and anime you
+            want to experience next.
+          </p>
+
+          <a class="app-link" href="/backloggy/" aria-label="Open Backloggy">
+            <img
+              class="app-icon"
+              src="/backloggy/icons/Icon-192.png"
+              width="82"
+              height="82"
+              alt=""
+            >
+            <span>
+              <span class="app-name">Open Backloggy</span>
+              <span class="app-description">
+                Discover, organize, and choose what comes next.
+              </span>
+            </span>
+            <span class="arrow" aria-hidden="true">→</span>
+          </a>
         </div>
-        <div class="navbar navbar-inverse" role="banner">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
+      </section>
 
-                    <a class="navbar-brand" href="index.html">
-                    	<h1><i><strong>Herick Chan</strong></i></h1>
-                        <p>Software/Game Developer</p>
-                    </a>
-                    
-                </div>
-                <div class="collapse navbar-collapse">
-                    <ul class="nav navbar-nav navbar-right">
-                        <li class="active"><a href="index.html">Home</a></li>
-                        <li><a href="portfolio.html">Portfolio</a></li> 
-                        <!-- <li><a href="#">Résumé</a></li>       -->
-                        <li><a href="contact.html ">Contact</a></li>                    
-                        <!-- <li><a href="shortcodes.html ">Shortcodes</a></li>                     -->
-                    </ul>
-                </div>
-                <div class="search">
-                    <form role="form">
-                        <i class="fa fa-search"></i>
-                        <div class="field-toggle">
-                            <input type="text" class="search-form" autocomplete="off" placeholder="Search">
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </header>
-    <!--/#header-->
-
-    <section id="home-slider" class="padding wow fadeIn" data-wow-duration="1000ms" data-wow-delay="300ms">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-6">
-                    <img src="images/me.jpg" class="img-responsive" alt="">
-                </div>
-                <div class="col-sm-6">
-                    <h1>Hey, I'm Herick</h1>
-                    <p>I am a graduate from the University of Waterloo with a Bachelor of Computer Science/Software Engineering Option.</p>
-                    <p>I enjoy playing video games in my spare time but I enjoy programming games and useful applications even more! At the end of the day, there's nothing like spending 	long hours of coding just to see the final result of an application/game.</p>
-                    <p>My main career goal is simple: I will always strive to become better and if I ever feel like I could do so much more, I will not hesitate to 					pursue a new direction</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <script type="text/javascript" src="js/jquery.js"></script>
-    <script type="text/javascript" src="js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="js/lightbox.min.js"></script>
-    <script type="text/javascript" src="js/wow.min.js"></script>
-    <script type="text/javascript" src="js/main.js"></script>   
-</body>
+      <footer class="footer">One list. More time for the good stuff.</footer>
+    </main>
+  </body>
 </html>
