@@ -6,11 +6,9 @@
     <meta name="theme-color" content="#0d0d0c">
     <meta
       name="description"
-      content="Open Backloggy, a calm home for everything you want to play, watch, and read."
+      content="Explore apps and projects made by Herick Chan."
     >
-    <title>Backloggy — Your next thing, sorted.</title>
-    <link rel="icon" href="/backloggy/icons/Icon-192.png">
-    <link rel="apple-touch-icon" href="/backloggy/icons/Icon-192.png">
+    <title>Herick Chan — Apps &amp; Projects</title>
     <style>
       @font-face {
         font-family: "Space Grotesk";
@@ -126,7 +124,7 @@
       }
 
       .hero-inner {
-        width: min(100%, 790px);
+        width: min(100%, 1120px);
         text-align: center;
       }
 
@@ -157,13 +155,20 @@
         line-height: 1.65;
       }
 
+      .app-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 310px), 1fr));
+        gap: 18px;
+        width: 100%;
+        margin: 48px auto 0;
+      }
+
       .app-link {
+        --accent: var(--cyan);
         display: grid;
         grid-template-columns: auto 1fr auto;
         align-items: center;
         gap: 20px;
-        width: min(100%, 610px);
-        margin: 48px auto 0;
         padding: 18px;
         border: 1px solid var(--line);
         border-radius: 25px;
@@ -182,23 +187,44 @@
 
       .app-link:hover {
         transform: translateY(-4px);
-        border-color: rgba(38, 197, 201, 0.55);
+        border-color: color-mix(in srgb, var(--accent) 55%, transparent);
         background: rgba(29, 30, 27, 0.94);
         box-shadow:
           0 34px 90px rgba(0, 0, 0, 0.45),
-          0 0 0 1px rgba(38, 197, 201, 0.08) inset;
+          0 0 0 1px color-mix(in srgb, var(--accent) 8%, transparent) inset;
       }
 
       .app-link:focus-visible {
-        outline: 3px solid var(--yellow);
+        outline: 3px solid var(--accent);
         outline-offset: 5px;
       }
 
-      .app-icon {
+      .app-link--bindr {
+        --accent: #ef5350;
+      }
+
+      .app-link--archive {
+        --accent: var(--yellow);
+      }
+
+      .app-icon,
+      .project-mark {
         width: 82px;
         height: 82px;
         border-radius: 22px;
         box-shadow: 0 16px 34px rgba(0, 0, 0, 0.38);
+      }
+
+      .project-mark {
+        display: grid;
+        place-items: center;
+        color: var(--ink);
+        background:
+          linear-gradient(145deg, #fff3bd, var(--yellow));
+        font-family: "IBM Plex Mono", ui-monospace, monospace;
+        font-size: 1rem;
+        font-weight: 500;
+        letter-spacing: -0.06em;
       }
 
       .app-name {
@@ -252,6 +278,11 @@
           padding-block: 52px;
         }
 
+        .app-grid {
+          gap: 14px;
+          margin-top: 36px;
+        }
+
         .app-link {
           grid-template-columns: auto 1fr;
           gap: 15px;
@@ -259,7 +290,8 @@
           border-radius: 21px;
         }
 
-        .app-icon {
+        .app-icon,
+        .project-mark {
           width: 66px;
           height: 66px;
           border-radius: 18px;
@@ -289,33 +321,71 @@
 
       <section class="hero" aria-labelledby="page-title">
         <div class="hero-inner">
-          <p class="eyebrow">Your next thing, sorted</p>
-          <h1 id="page-title">Meet Backloggy.</h1>
+          <p class="eyebrow">Apps &amp; projects by Herick</p>
+          <h1 id="page-title">Useful things, thoughtfully made.</h1>
           <p class="intro">
-            A calm home for every game, film, show, book, manga, and anime you
-            want to experience next.
+            A growing collection of focused apps for organizing the things you
+            enjoy, from your next story to your favorite cards.
           </p>
 
-          <a class="app-link" href="/backloggy/" aria-label="Open Backloggy">
-            <img
-              class="app-icon"
-              src="/backloggy/icons/Icon-192.png"
-              width="82"
-              height="82"
-              alt=""
-            >
-            <span>
-              <span class="app-name">Open Backloggy</span>
-              <span class="app-description">
-                Discover, organize, and choose what comes next.
+          <div class="app-grid">
+            <a class="app-link" href="/backloggy/" aria-label="Open Backloggy">
+              <img
+                class="app-icon"
+                src="/backloggy/icons/Icon-192.png"
+                width="82"
+                height="82"
+                alt=""
+              >
+              <span>
+                <span class="app-name">Backloggy</span>
+                <span class="app-description">
+                  Discover, organize, and choose what comes next.
+                </span>
               </span>
-            </span>
-            <span class="arrow" aria-hidden="true">→</span>
-          </a>
+              <span class="arrow" aria-hidden="true">→</span>
+            </a>
+
+            <a
+              class="app-link app-link--bindr"
+              href="/bindr/"
+              aria-label="Open PokeBindr"
+            >
+              <img
+                class="app-icon"
+                src="/bindr/icons/Icon-192.png"
+                width="82"
+                height="82"
+                alt=""
+              >
+              <span>
+                <span class="app-name">PokeBindr</span>
+                <span class="app-description">
+                  Scan, catalog, and organize your Pokémon card collection.
+                </span>
+              </span>
+              <span class="arrow" aria-hidden="true">→</span>
+            </a>
+
+            <a
+              class="app-link app-link--archive"
+              href="/archive/portfolio/portfolio.html"
+              aria-label="Explore the game project archive"
+            >
+              <span class="project-mark" aria-hidden="true">&lt;/&gt;</span>
+              <span>
+                <span class="app-name">Game Project Archive</span>
+                <span class="app-description">
+                  Explore earlier games, experiments, galleries, and downloads.
+                </span>
+              </span>
+              <span class="arrow" aria-hidden="true">→</span>
+            </a>
+          </div>
         </div>
       </section>
 
-      <footer class="footer">One list. More time for the good stuff.</footer>
+      <footer class="footer">Built with care. Available on the web.</footer>
     </main>
   </body>
 </html>
