@@ -1,5 +1,5 @@
 const CACHE_PREFIX = 'pokebindr-pwa-';
-const CACHE_NAME = `${CACHE_PREFIX}v2`;
+const CACHE_NAME = `${CACHE_PREFIX}v3`;
 const CORE_PATHS = [
   './',
   'index.html',
@@ -12,7 +12,7 @@ const CORE_PATHS = [
   'icons/Icon-512.png',
   'icons/Icon-maskable-192.png',
   'icons/Icon-maskable-512.png',
-  'sqflite_sw.js',
+  'drift_worker.dart.js',
   'sqlite3.wasm',
   'assets/AssetManifest.bin.json',
   'assets/FontManifest.json',
