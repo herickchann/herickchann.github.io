@@ -203,28 +203,11 @@
         --accent: #ef5350;
       }
 
-      .app-link--archive {
-        --accent: var(--yellow);
-      }
-
-      .app-icon,
-      .project-mark {
+      .app-icon {
         width: 82px;
         height: 82px;
         border-radius: 22px;
         box-shadow: 0 16px 34px rgba(0, 0, 0, 0.38);
-      }
-
-      .project-mark {
-        display: grid;
-        place-items: center;
-        color: var(--ink);
-        background:
-          linear-gradient(145deg, #fff3bd, var(--yellow));
-        font-family: "IBM Plex Mono", ui-monospace, monospace;
-        font-size: 1rem;
-        font-weight: 500;
-        letter-spacing: -0.06em;
       }
 
       .app-name {
@@ -290,8 +273,7 @@
           border-radius: 21px;
         }
 
-        .app-icon,
-        .project-mark {
+        .app-icon {
           width: 66px;
           height: 66px;
           border-radius: 18px;
@@ -367,20 +349,6 @@
               <span class="arrow" aria-hidden="true">→</span>
             </a>
 
-            <a
-              class="app-link app-link--archive"
-              href="/archive/portfolio/portfolio.html"
-              aria-label="Explore the game project archive"
-            >
-              <span class="project-mark" aria-hidden="true">&lt;/&gt;</span>
-              <span>
-                <span class="app-name">Game Project Archive</span>
-                <span class="app-description">
-                  Explore earlier games, experiments, galleries, and downloads.
-                </span>
-              </span>
-              <span class="arrow" aria-hidden="true">→</span>
-            </a>
           </div>
         </div>
       </section>
