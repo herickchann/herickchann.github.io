@@ -16,8 +16,40 @@
   -->
   <base href="/backloggy/">
 
+
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <!--
+    GitHub Pages cannot send response headers, so the policy rides in the
+    document. That rules out frame-ancestors (meta-delivered policies ignore
+    it) and, with it, clickjacking protection — a header-capable host would
+    add `frame-ancestors 'none'`.
+
+    'unsafe-inline' is in script-src deliberately. Google Identity Services
+    executes an inline script during sign-in; pinning its hash instead would
+    silently break sign-in on the next dependency bump, which is worse than
+    the protection it buys. The directives that still earn their place are
+    the ones bounding where content comes from and where it can be sent:
+      connect-src  the metadata APIs and Firestore, which also uses wss.
+      img-src      poster art comes from whichever metadata source matched.
+      frame-src    the Firebase Auth helper iframe and the Google sign-in flow.
+      object-src   no plugins, ever.
+      base-uri     a rewritten <base> cannot redirect every relative URL.
+      form-action  nothing can post the page's data to another origin.
+  -->
+  <meta http-equiv="Content-Security-Policy" content="
+    default-src 'self';
+    script-src 'self' 'unsafe-inline' 'wasm-unsafe-eval' https://www.gstatic.com https://apis.google.com https://accounts.google.com;
+    style-src 'self' 'unsafe-inline' https://accounts.google.com;
+    img-src 'self' data: blob: https:;
+    font-src 'self' data:;
+    connect-src 'self' data: blob: https: wss:;
+    worker-src 'self' blob:;
+    frame-src 'self' https://backloggy.firebaseapp.com https://accounts.google.com https://apis.google.com;
+    object-src 'none';
+    base-uri 'self';
+    form-action 'self';
+  ">
   <meta name="description" content="Track and discover anime, shows, movies, games, books, and more with Backloggy.">
   <meta name="theme-color" content="#0B0A08">
 
@@ -34,21 +66,7 @@
   <link rel="manifest" href="manifest.json">
 </head>
 <body>
-  <!--
-    You can customize the "flutter_bootstrap.js" script.
-    This is useful to provide a custom configuration to the Flutter loader
-    or to give the user feedback during the initialization process.
-
-    For more details:
-    * https://docs.flutter.dev/platform-integration/web/initialization
-  -->
-  <script>
-    if ('serviceWorker' in navigator && location.protocol === 'https:') {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('service_worker.js');
-      });
-    }
-  </script>
+  <script src="sw_register.js"></script>
   <script src="flutter_bootstrap.js" async></script>
 </body>
 </html>
