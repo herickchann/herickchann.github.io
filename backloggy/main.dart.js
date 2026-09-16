@@ -10332,17 +10332,14 @@ aqg:function aqg(a,b){this.a=a
 this.b=b},
 aqe:function aqe(){},
 aqf:function aqf(a){this.a=a},
-jE(a){var s,r,q=A.w(t.N,t.z)
-q.l(0,"User-Agent","Backloggy/1.6 (+https://github.com/herickchann/backlog-tracker)")
-q=A.bIy(B.tU,q,B.tW,B.tW)
-s=new A.a52(A.c([B.Lk],t.i6))
-s.G(s,B.aju)
-r=new A.avb($,s,$,new A.aB2(51200),!1)
-r.WB$=q
-r.aeP$=new A.arx(A.aw(t.m))
-if(a!=null)s.B(s,new A.Wz(a,A.ci(null,t.H)))
-s.B(s,new A.XA(r))
-return r},
+jE(a){var s,r=A.bIy(B.tU,A.w(t.N,t.z),B.tW,B.tW),q=new A.a52(A.c([B.Lk],t.i6))
+q.G(q,B.aju)
+s=new A.avb($,q,$,new A.aB2(51200),!1)
+s.WB$=r
+s.aeP$=new A.arx(A.aw(t.m))
+if(a!=null)q.B(q,new A.Wz(a,A.ci(null,t.H)))
+q.B(q,new A.XA(s))
+return s},
 Wz:function Wz(a,b){this.a=a
 this.b=b},
 b8T:function b8T(a,b,c){this.a=a
