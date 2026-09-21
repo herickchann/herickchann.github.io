@@ -1,0 +1,20 @@
+{
+  "junkPatterns": [
+    "\\blot\\b",
+    "\\bproxy\\b",
+    "\\breprint\\b",
+    "\\bdigital\\b",
+    "\\bcode\\s*card\\b",
+    "\\bonline\\s*code\\b",
+    "\\bfor\\s*parts\\b",
+    "\\bdmg\\b",
+    "\\bdamaged\\b",
+    "\\bfake\\b",
+    "\\bcounterfeit\\b",
+    "\\breplica\\b",
+    "\\bsticker\\s*only\\b",
+    "\\bempty\\s*box\\b",
+    "\\b(japanese|japan|jpn|jp|korean|chinese|german|deutsch|french|italian|spanish|portuguese|thai|indonesian)\\b"
+  ],
+  "graderPattern": "\\b(PSA|BGS|CGC|SGC|TAG|ACE)\\b"
+}
