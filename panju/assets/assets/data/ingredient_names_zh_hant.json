@@ -1,0 +1,1169 @@
+{
+ "version": 3,
+ "locale": "zh-Hant-HK",
+ "about": "Hong Kong Chinese names for catalog ingredients, keyed by catalog id. The first name is the one shown when searching in Chinese; the rest are extra search terms.",
+ "names": {
+  "en:egg": [
+   "雞蛋",
+   "蛋"
+  ],
+  "en:quail-eggs": [
+   "鵪鶉蛋"
+  ],
+  "en:century-egg": [
+   "皮蛋"
+  ],
+  "en:salted-egg": [
+   "鹹蛋",
+   "鹹鴨蛋"
+  ],
+  "en:milk": [
+   "牛奶",
+   "鮮奶",
+   "奶"
+  ],
+  "en:butter": [
+   "牛油"
+  ],
+  "en:cheese": [
+   "芝士",
+   "起司"
+  ],
+  "en:cream": [
+   "忌廉"
+  ],
+  "en:whipping-cream": [
+   "淡忌廉",
+   "鮮忌廉"
+  ],
+  "en:sour-cream": [
+   "酸忌廉"
+  ],
+  "en:cream-cheese": [
+   "忌廉芝士"
+  ],
+  "en:cheddar": [
+   "車打芝士"
+  ],
+  "en:mozzarella": [
+   "莫薩里拉芝士",
+   "水牛芝士"
+  ],
+  "en:parmesan": [
+   "巴馬臣芝士"
+  ],
+  "en:yogurt": [
+   "乳酪",
+   "酸奶"
+  ],
+  "en:ice-cream": [
+   "雪糕"
+  ],
+  "en:evaporated-milk": [
+   "淡奶",
+   "花奶"
+  ],
+  "en:condensed-milk": [
+   "煉奶"
+  ],
+  "en:soy-milk": [
+   "豆漿",
+   "豆奶"
+  ],
+  "en:almond-milk": [
+   "杏仁奶"
+  ],
+  "en:oat-milk": [
+   "燕麥奶"
+  ],
+  "en:coconut-milk": [
+   "椰奶",
+   "椰漿"
+  ],
+  "en:chicken": [
+   "雞",
+   "雞肉"
+  ],
+  "en:whole-chicken": [
+   "全雞",
+   "光雞"
+  ],
+  "en:chicken-breast": [
+   "雞胸",
+   "雞胸肉"
+  ],
+  "en:chicken-thigh": [
+   "雞腿肉",
+   "雞扒"
+  ],
+  "en:chicken-legs": [
+   "雞髀",
+   "雞腿"
+  ],
+  "en:chicken-drumsticks": [
+   "雞鎚"
+  ],
+  "en:chicken-wings": [
+   "雞翼",
+   "雞中翼"
+  ],
+  "en:duck": [
+   "鴨",
+   "鴨肉"
+  ],
+  "en:pork": [
+   "豬肉",
+   "豬"
+  ],
+  "en:minced-pork": [
+   "免治豬肉",
+   "豬肉碎",
+   "絞豬肉"
+  ],
+  "en:pork-belly": [
+   "五花腩",
+   "豬腩肉",
+   "五花肉"
+  ],
+  "en:pork-spare-ribs": [
+   "排骨",
+   "豬排骨"
+  ],
+  "en:pork-chops": [
+   "豬扒"
+  ],
+  "en:pork-loin": [
+   "豬柳"
+  ],
+  "en:pork-shoulder": [
+   "梅頭肉",
+   "梅頭"
+  ],
+  "en:beef": [
+   "牛肉",
+   "牛"
+  ],
+  "en:minced-beef": [
+   "免治牛肉",
+   "牛肉碎",
+   "絞牛肉"
+  ],
+  "en:beef-brisket": [
+   "牛腩"
+  ],
+  "en:beef-steak": [
+   "牛扒"
+  ],
+  "en:lamb": [
+   "羊肉",
+   "羊"
+  ],
+  "en:ham": [
+   "火腿"
+  ],
+  "en:bacon": [
+   "煙肉",
+   "培根"
+  ],
+  "en:sausage": [
+   "香腸"
+  ],
+  "en:chinese-sausage": [
+   "臘腸"
+  ],
+  "en:char-siu": [
+   "叉燒"
+  ],
+  "en:luncheon-meat": [
+   "午餐肉"
+  ],
+  "en:turkey": [
+   "火雞"
+  ],
+  "en:fish": [
+   "魚",
+   "魚肉"
+  ],
+  "en:shrimp": [
+   "蝦",
+   "蝦仁",
+   "鮮蝦"
+  ],
+  "en:prawns": [
+   "大蝦",
+   "明蝦"
+  ],
+  "en:dried-shrimp": [
+   "蝦米"
+  ],
+  "en:salmon": [
+   "三文魚"
+  ],
+  "en:tuna": [
+   "吞拿魚",
+   "金槍魚"
+  ],
+  "en:cod": [
+   "鱈魚"
+  ],
+  "en:sea-bass": [
+   "鱸魚"
+  ],
+  "en:grouper": [
+   "石斑",
+   "石斑魚"
+  ],
+  "en:squid": [
+   "魷魚"
+  ],
+  "en:crab": [
+   "蟹"
+  ],
+  "en:clams": [
+   "蜆"
+  ],
+  "en:mussels": [
+   "青口"
+  ],
+  "en:oysters": [
+   "蠔",
+   "生蠔"
+  ],
+  "en:scallop": [
+   "帶子"
+  ],
+  "en:dried-scallops": [
+   "瑤柱"
+  ],
+  "en:abalone": [
+   "鮑魚"
+  ],
+  "en:anchovy": [
+   "鯷魚"
+  ],
+  "en:fish-balls": [
+   "魚蛋",
+   "魚丸"
+  ],
+  "en:tomato": [
+   "番茄",
+   "蕃茄",
+   "西紅柿"
+  ],
+  "en:cherry-tomatoes": [
+   "車厘茄",
+   "小番茄"
+  ],
+  "en:potato": [
+   "薯仔",
+   "馬鈴薯",
+   "土豆"
+  ],
+  "en:sweet-potato": [
+   "番薯",
+   "地瓜"
+  ],
+  "en:taro": [
+   "芋頭",
+   "芋"
+  ],
+  "en:chinese-yam": [
+   "淮山",
+   "山藥"
+  ],
+  "en:onion": [
+   "洋蔥",
+   "洋葱"
+  ],
+  "en:red-onion": [
+   "紫洋蔥",
+   "紅洋蔥"
+  ],
+  "en:shallot": [
+   "乾蔥",
+   "紅蔥頭"
+  ],
+  "en:spring-onion": [
+   "蔥",
+   "葱",
+   "青蔥"
+  ],
+  "en:leek": [
+   "京蔥",
+   "大蔥"
+  ],
+  "en:garlic": [
+   "蒜頭",
+   "蒜",
+   "大蒜",
+   "蒜蓉"
+  ],
+  "en:garlic-chive": [
+   "韭菜"
+  ],
+  "en:ginger": [
+   "薑",
+   "生薑",
+   "老薑",
+   "姜"
+  ],
+  "en:carrot": [
+   "紅蘿蔔",
+   "甘筍",
+   "胡蘿蔔"
+  ],
+  "en:daikon": [
+   "白蘿蔔",
+   "蘿蔔"
+  ],
+  "en:celery": [
+   "西芹"
+  ],
+  "en:cabbage": [
+   "椰菜",
+   "包心菜",
+   "高麗菜"
+  ],
+  "en:napa-cabbage": [
+   "紹菜",
+   "黃芽白",
+   "大白菜"
+  ],
+  "en:bok-choi": [
+   "白菜",
+   "小白菜"
+  ],
+  "en:choy-sum": [
+   "菜心"
+  ],
+  "en:gai-lan": [
+   "芥蘭"
+  ],
+  "en:water-spinach": [
+   "通菜",
+   "蕹菜",
+   "空心菜"
+  ],
+  "en:spinach": [
+   "菠菜"
+  ],
+  "en:lettuce": [
+   "生菜"
+  ],
+  "en:watercress": [
+   "西洋菜"
+  ],
+  "en:kale": [
+   "羽衣甘藍"
+  ],
+  "en:broccoli": [
+   "西蘭花",
+   "綠花椰菜"
+  ],
+  "en:cauliflower": [
+   "椰菜花",
+   "花椰菜"
+  ],
+  "en:cucumber": [
+   "青瓜",
+   "黃瓜"
+  ],
+  "en:aubergine": [
+   "茄子",
+   "矮瓜"
+  ],
+  "en:zucchini": [
+   "翠玉瓜",
+   "意大利青瓜"
+  ],
+  "en:pumpkin": [
+   "南瓜"
+  ],
+  "en:wax-gourd": [
+   "冬瓜"
+  ],
+  "en:bitter-melon": [
+   "苦瓜",
+   "涼瓜"
+  ],
+  "en:okra": [
+   "秋葵",
+   "羊角豆"
+  ],
+  "en:bell-pepper": [
+   "甜椒",
+   "燈籠椒",
+   "彩椒"
+  ],
+  "en:red-pepper": [
+   "紅椒"
+  ],
+  "en:chili-pepper": [
+   "辣椒",
+   "指天椒"
+  ],
+  "en:jalapeno": [
+   "墨西哥辣椒"
+  ],
+  "en:corn": [
+   "粟米",
+   "玉米"
+  ],
+  "en:baby-corn": [
+   "粟米仔",
+   "玉米筍"
+  ],
+  "en:peas": [
+   "青豆"
+  ],
+  "en:green-beans": [
+   "四季豆"
+  ],
+  "en:snow-peas": [
+   "荷蘭豆"
+  ],
+  "en:sugar-snap-peas": [
+   "蜜糖豆"
+  ],
+  "en:bean-sprouts": [
+   "芽菜",
+   "豆芽",
+   "銀芽"
+  ],
+  "en:asparagus": [
+   "蘆筍"
+  ],
+  "en:lotus-root": [
+   "蓮藕",
+   "藕"
+  ],
+  "en:bamboo-shoot": [
+   "竹筍",
+   "筍"
+  ],
+  "en:water-chestnut": [
+   "馬蹄",
+   "荸薺"
+  ],
+  "en:mushroom": [
+   "蘑菇",
+   "菇"
+  ],
+  "en:shiitake": [
+   "冬菇",
+   "香菇",
+   "花菇"
+  ],
+  "en:oyster-mushroom": [
+   "蠔菇",
+   "秀珍菇"
+  ],
+  "en:enoki-mushrooms": [
+   "金菇",
+   "金針菇"
+  ],
+  "en:king-oyster-mushroom": [
+   "杏鮑菇"
+  ],
+  "en:wood-ear": [
+   "木耳",
+   "雲耳",
+   "黑木耳"
+  ],
+  "en:avocado": [
+   "牛油果"
+  ],
+  "en:seaweed": [
+   "海帶"
+  ],
+  "en:nori": [
+   "紫菜",
+   "海苔"
+  ],
+  "en:coriander": [
+   "芫茜",
+   "芫荽",
+   "香菜"
+  ],
+  "en:thai-basil": [
+   "九層塔"
+  ],
+  "en:basil": [
+   "羅勒"
+  ],
+  "en:parsley": [
+   "番茜"
+  ],
+  "en:mint": [
+   "薄荷"
+  ],
+  "en:lemongrass": [
+   "香茅"
+  ],
+  "en:rosemary": [
+   "迷迭香"
+  ],
+  "en:thyme": [
+   "百里香"
+  ],
+  "en:oregano": [
+   "牛至"
+  ],
+  "en:dill": [
+   "蒔蘿"
+  ],
+  "en:bay-leaf": [
+   "月桂葉",
+   "香葉"
+  ],
+  "en:star-anise": [
+   "八角"
+  ],
+  "en:cinnamon": [
+   "肉桂",
+   "玉桂",
+   "桂皮"
+  ],
+  "en:five-spice-powder": [
+   "五香粉"
+  ],
+  "en:sichuan-pepper": [
+   "花椒"
+  ],
+  "en:cumin": [
+   "孜然"
+  ],
+  "en:paprika": [
+   "紅椒粉"
+  ],
+  "en:chili-powder": [
+   "辣椒粉"
+  ],
+  "en:red-pepper-flakes": [
+   "辣椒碎"
+  ],
+  "en:curry-powder": [
+   "咖喱粉"
+  ],
+  "en:curry-paste": [
+   "咖喱醬"
+  ],
+  "en:turmeric": [
+   "黃薑粉",
+   "薑黃"
+  ],
+  "en:black-pepper": [
+   "黑胡椒"
+  ],
+  "en:white-pepper": [
+   "白胡椒",
+   "胡椒粉"
+  ],
+  "en:garlic-powder": [
+   "蒜粉"
+  ],
+  "en:onion-powder": [
+   "洋蔥粉"
+  ],
+  "en:nutmeg": [
+   "肉豆蔻"
+  ],
+  "en:cloves": [
+   "丁香"
+  ],
+  "en:cardamom": [
+   "小豆蔻"
+  ],
+  "en:saffron": [
+   "番紅花"
+  ],
+  "en:salt": [
+   "鹽",
+   "食鹽",
+   "海鹽"
+  ],
+  "en:msg": [
+   "味精"
+  ],
+  "en:chicken-bouillon-powder": [
+   "雞粉"
+  ],
+  "en:chicken-stock-cube": [
+   "雞湯塊"
+  ],
+  "en:soy-sauce": [
+   "豉油",
+   "醬油"
+  ],
+  "en:light-soy-sauce": [
+   "生抽"
+  ],
+  "en:dark-soy-sauce": [
+   "老抽"
+  ],
+  "en:oyster-sauce": [
+   "蠔油"
+  ],
+  "en:hoisin-sauce": [
+   "海鮮醬"
+  ],
+  "en:fish-sauce": [
+   "魚露"
+  ],
+  "en:chilli-sauce": [
+   "辣椒醬"
+  ],
+  "en:sweet-chilli-sauce": [
+   "甜辣醬"
+  ],
+  "en:sriracha": [
+   "是拉差辣椒醬",
+   "是拉差"
+  ],
+  "en:doubanjiang": [
+   "豆瓣醬"
+  ],
+  "en:fermented-black-beans": [
+   "豆豉"
+  ],
+  "en:shrimp-paste": [
+   "蝦醬",
+   "蝦膏"
+  ],
+  "en:sesame-paste": [
+   "芝麻醬"
+  ],
+  "en:sweet-bean-paste": [
+   "甜麵醬"
+  ],
+  "en:ketchup": [
+   "茄汁",
+   "番茄醬"
+  ],
+  "en:mayonnaise": [
+   "蛋黃醬",
+   "沙律醬"
+  ],
+  "en:mustard": [
+   "芥末",
+   "黃芥末"
+  ],
+  "en:wasabi": [
+   "青芥辣",
+   "山葵"
+  ],
+  "en:miso": [
+   "味噌"
+  ],
+  "en:mirin": [
+   "味醂"
+  ],
+  "en:sake": [
+   "清酒"
+  ],
+  "en:kimchi": [
+   "泡菜",
+   "韓國泡菜"
+  ],
+  "en:vinegar": [
+   "醋"
+  ],
+  "en:rice-vinegar": [
+   "米醋"
+  ],
+  "en:shaoxing-wine": [
+   "紹興酒",
+   "花雕酒"
+  ],
+  "en:rice-wine": [
+   "米酒"
+  ],
+  "en:honey": [
+   "蜜糖",
+   "蜂蜜"
+  ],
+  "en:maple-syrup": [
+   "楓糖漿"
+  ],
+  "en:jam": [
+   "果醬"
+  ],
+  "en:peanut-butter": [
+   "花生醬"
+  ],
+  "en:olive-oil": [
+   "橄欖油"
+  ],
+  "en:vegetable-oil": [
+   "菜油",
+   "植物油",
+   "食油"
+  ],
+  "en:peanut-oil": [
+   "花生油"
+  ],
+  "en:canola-oil": [
+   "芥花籽油"
+  ],
+  "en:sesame-oil": [
+   "麻油",
+   "芝麻油"
+  ],
+  "en:lard": [
+   "豬油"
+  ],
+  "en:ghee": [
+   "酥油"
+  ],
+  "en:sugar": [
+   "糖",
+   "白糖",
+   "砂糖"
+  ],
+  "en:brown-sugar": [
+   "黃糖",
+   "紅糖"
+  ],
+  "en:icing-sugar": [
+   "糖霜"
+  ],
+  "en:rock-sugar": [
+   "冰糖"
+  ],
+  "en:flour": [
+   "麵粉"
+  ],
+  "en:cornstarch": [
+   "生粉",
+   "粟粉"
+  ],
+  "en:potato-starch": [
+   "薯粉"
+  ],
+  "en:tapioca-flour": [
+   "木薯粉"
+  ],
+  "en:baking-powder": [
+   "泡打粉",
+   "發粉"
+  ],
+  "en:bicarbonate-of-soda": [
+   "梳打粉",
+   "小蘇打"
+  ],
+  "en:yeast": [
+   "酵母"
+  ],
+  "en:vanilla": [
+   "雲呢拿",
+   "香草"
+  ],
+  "en:vanilla-extract": [
+   "雲呢拿香油",
+   "香草精"
+  ],
+  "en:cocoa-powder": [
+   "可可粉"
+  ],
+  "en:chocolate": [
+   "朱古力",
+   "巧克力"
+  ],
+  "en:bread": [
+   "麵包"
+  ],
+  "en:breadcrumbs": [
+   "麵包糠"
+  ],
+  "en:panko": [
+   "日式麵包糠"
+  ],
+  "en:tortilla": [
+   "墨西哥薄餅"
+  ],
+  "en:rice": [
+   "米",
+   "白米",
+   "大米"
+  ],
+  "en:white-rice": [
+   "白飯",
+   "飯"
+  ],
+  "en:jasmine-rice": [
+   "香米",
+   "茉莉香米"
+  ],
+  "en:glutinous-rice": [
+   "糯米"
+  ],
+  "en:noodles": [
+   "麵",
+   "麵條"
+  ],
+  "en:egg-noodles": [
+   "蛋麵",
+   "全蛋麵"
+  ],
+  "en:instant-noodles": [
+   "即食麵",
+   "公仔麵",
+   "杯麵"
+  ],
+  "en:rice-vermicelli": [
+   "米粉"
+  ],
+  "en:flat-rice-noodles": [
+   "河粉"
+  ],
+  "en:glass-noodle": [
+   "粉絲",
+   "冬粉"
+  ],
+  "en:udon": [
+   "烏冬"
+  ],
+  "en:spaghetti": [
+   "意粉",
+   "意大利粉"
+  ],
+  "en:pasta": [
+   "意大利麵"
+  ],
+  "en:wonton-skin": [
+   "雲吞皮",
+   "餛飩皮"
+  ],
+  "en:dumpling-wrappers": [
+   "餃子皮"
+  ],
+  "en:tofu": [
+   "豆腐"
+  ],
+  "en:silken-tofu": [
+   "滑豆腐",
+   "嫩豆腐"
+  ],
+  "en:firm-tofu": [
+   "硬豆腐"
+  ],
+  "en:fried-tofu": [
+   "豆卜",
+   "炸豆腐"
+  ],
+  "en:tofu-skin": [
+   "腐竹",
+   "腐皮"
+  ],
+  "en:red-bean": [
+   "紅豆"
+  ],
+  "en:mung-beans": [
+   "綠豆"
+  ],
+  "en:soya-bean": [
+   "黃豆",
+   "大豆"
+  ],
+  "en:black-beans": [
+   "黑豆"
+  ],
+  "en:chickpeas": [
+   "鷹嘴豆"
+  ],
+  "en:lentils": [
+   "扁豆"
+  ],
+  "en:peanuts": [
+   "花生"
+  ],
+  "en:cashews": [
+   "腰果"
+  ],
+  "en:almonds": [
+   "杏仁"
+  ],
+  "en:walnuts": [
+   "合桃",
+   "核桃"
+  ],
+  "en:sesame-seeds": [
+   "芝麻"
+  ],
+  "en:lotus-seed": [
+   "蓮子"
+  ],
+  "en:ginkgo-nuts": [
+   "白果",
+   "銀杏"
+  ],
+  "en:jujube": [
+   "紅棗",
+   "棗"
+  ],
+  "en:goji": [
+   "杞子",
+   "枸杞"
+  ],
+  "en:oats": [
+   "燕麥",
+   "麥皮"
+  ],
+  "en:pearl-barley": [
+   "洋薏米",
+   "薏米"
+  ],
+  "en:barley": [
+   "大麥"
+  ],
+  "en:millet": [
+   "小米"
+  ],
+  "en:quinoa": [
+   "藜麥"
+  ],
+  "en:apple": [
+   "蘋果"
+  ],
+  "en:banana": [
+   "香蕉"
+  ],
+  "en:orange": [
+   "橙"
+  ],
+  "en:lemon": [
+   "檸檬"
+  ],
+  "en:lime": [
+   "青檸"
+  ],
+  "en:strawberry": [
+   "士多啤梨",
+   "草莓"
+  ],
+  "en:mango": [
+   "芒果"
+  ],
+  "en:watermelon": [
+   "西瓜"
+  ],
+  "en:pineapple": [
+   "菠蘿",
+   "鳳梨"
+  ],
+  "en:papaya": [
+   "木瓜"
+  ],
+  "en:kiwifruit": [
+   "奇異果"
+  ],
+  "en:peach": [
+   "桃"
+  ],
+  "en:pear": [
+   "啤梨",
+   "梨"
+  ],
+  "en:cherry": [
+   "車厘子",
+   "櫻桃"
+  ],
+  "en:blueberries": [
+   "藍莓"
+  ],
+  "en:grape": [
+   "提子",
+   "葡萄"
+  ],
+  "en:chicken-stock": [
+   "雞湯",
+   "上湯",
+   "雞上湯"
+  ],
+  "en:beef-stock": [
+   "牛肉湯"
+  ],
+  "en:fish-stock": [
+   "魚湯"
+  ],
+  "en:vegetable-stock": [
+   "蔬菜湯",
+   "菜湯"
+  ],
+  "en:water": [
+   "水"
+  ],
+  "en:tea": [
+   "茶",
+   "茶葉"
+  ],
+  "en:coffee": [
+   "咖啡"
+  ],
+  "en:beer": [
+   "啤酒"
+  ],
+  "en:wine": [
+   "葡萄酒"
+  ],
+  "en:red-wine": [
+   "紅酒"
+  ],
+  "en:white-wine": [
+   "白酒"
+  ],
+  "en:orange-juice": [
+   "橙汁"
+  ],
+  "en:apple-juice": [
+   "蘋果汁"
+  ],
+  "en:lemon-juice": [
+   "檸檬汁"
+  ],
+  "en:lime-juice": [
+   "青檸汁"
+  ],
+  "en:chinese-celery": [
+   "唐芹",
+   "芹菜"
+  ],
+  "en:chinkiang-vinegar": [
+   "鎮江醋",
+   "鎮江香醋"
+  ],
+  "en:chinese-red-vinegar": [
+   "浙醋",
+   "大紅浙醋",
+   "紅醋"
+  ],
+  "en:chili-oil": [
+   "辣椒油",
+   "辣油"
+  ],
+  "en:chili-crisp": [
+   "香脆辣椒"
+  ],
+  "en:chili-garlic-sauce": [
+   "蒜蓉辣椒醬"
+  ],
+  "en:black-bean-sauce": [
+   "豆豉醬"
+  ],
+  "en:yellow-bean-sauce": [
+   "麵豉醬",
+   "黃豆醬"
+  ],
+  "en:red-bean-paste": [
+   "紅豆沙",
+   "豆沙"
+  ],
+  "en:sha-cha-sauce": [
+   "沙茶醬"
+  ],
+  "en:xo-sauce": [
+   "XO醬"
+  ],
+  "en:char-siu-sauce": [
+   "叉燒醬"
+  ],
+  "en:rose-cooking-wine": [
+   "玫瑰露酒",
+   "玫瑰露"
+  ],
+  "en:vegetarian-oyster-sauce": [
+   "素蠔油",
+   "齋蠔油"
+  ],
+  "en:fermented-bean-curd": [
+   "腐乳",
+   "白腐乳"
+  ],
+  "en:red-fermented-bean-curd": [
+   "南乳",
+   "紅腐乳"
+  ],
+  "en:suan-cai": [
+   "酸菜"
+  ],
+  "en:zha-cai": [
+   "榨菜"
+  ],
+  "en:mei-cai": [
+   "梅菜"
+  ],
+  "en:ya-cai": [
+   "宜賓芽菜"
+  ],
+  "en:dried-tangerine-peel": [
+   "陳皮"
+  ],
+  "en:sand-ginger": [
+   "沙薑"
+  ],
+  "en:dried-lily-flowers": [
+   "金針",
+   "金針菜",
+   "黃花菜"
+  ],
+  "en:snow-fungus": [
+   "雪耳",
+   "銀耳"
+  ],
+  "en:shimeji-mushrooms": [
+   "本菇",
+   "鴻喜菇"
+  ],
+  "en:yellow-chives": [
+   "韭黃"
+  ],
+  "en:soybean-sprouts": [
+   "大豆芽",
+   "黃豆芽"
+  ],
+  "en:pea-shoots": [
+   "豆苗"
+  ],
+  "en:luffa": [
+   "絲瓜",
+   "勝瓜"
+  ],
+  "en:chayote": [
+   "佛手瓜",
+   "合掌瓜"
+  ],
+  "en:pressed-tofu": [
+   "豆乾",
+   "豆腐乾"
+  ],
+  "en:rice-cakes": [
+   "年糕"
+  ],
+  "en:spring-roll-wrappers": [
+   "春卷皮"
+  ],
+  "en:lotus-leaves": [
+   "荷葉"
+  ],
+  "en:bamboo-leaves": [
+   "粽葉",
+   "竹葉"
+  ],
+  "en:brown-slab-sugar": [
+   "片糖",
+   "黃片糖"
+  ],
+  "en:chinese-bacon": [
+   "臘肉"
+  ],
+  "en:salted-fish": [
+   "鹹魚"
+  ],
+  "en:fish-cakes": [
+   "魚餅"
+  ],
+  "en:papery-shrimp": [
+   "蝦皮"
+  ]
+ }
+}
