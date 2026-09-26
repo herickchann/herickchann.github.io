@@ -1,7 +1,8 @@
 name: store-watch
 
 # Every 30 minutes: read the 401 Games listings on the PokeBindr watchlist and
-# push an ntfy notification on a restock or price drop. The watchlist itself is
+# push an ntfy notification on a restock or price drop, to each person who
+# wishlisted the card and turned on 401 alerts in the app. The watchlist itself is
 # published daily by the PokeBindr price-history job (price-history/401/ on
 # gh-pages). Runs here rather than in the private app repo because public-repo
 # Actions minutes are free.
@@ -59,7 +60,14 @@ jobs:
         if: inputs.probe == ''
         env:
           NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
-        run: python3 src/.github/store-watch/watch.py --site site/price-history/401 --state "$STATE"
+          # Read-only (Cloud Datastore Viewer) key: finds who opted in to 401
+          # alerts and which topic each of them listens on.
+          FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+        run: |
+          if [ -n "$FIREBASE_SERVICE_ACCOUNT" ]; then
+            pip install --quiet google-cloud-firestore
+          fi
+          python3 src/.github/store-watch/watch.py --site site/price-history/401 --state "$STATE"
 
       - name: Save state
         if: inputs.probe == '' && always()

@@ -8,10 +8,16 @@ reads each listing's /products/{handle}.js, compares it with the last reading,
 and pushes an ntfy notification when a watched condition comes back in stock,
 drops in price, or is down to its last copy.
 
+Each alert goes only to the people who asked for that card: users who turned on
+401 alerts in the app's Settings and have it on their wishlist, each on the
+ntfy topic their app generated. Those are read from Firestore every run and
+never written anywhere, so the public repo holds no topic or wishlist-owner.
+Cards in the PokeBindr repo's extras file alert NTFY_TOPIC instead.
+
 State (the last reading of every listing) lives in the Actions cache, not in
 git. price-history/401/stock.json — what the app shows — is rewritten only when
 a price or stock count changed, or every few hours so the app can tell fresh
-data from stale. Stdlib only.
+data from stale. Stdlib only, except google-cloud-firestore for the routing.
 """
 
 from __future__ import annotations
@@ -20,6 +26,7 @@ import argparse
 import base64
 import json
 import os
+import re
 import sys
 import time
 import urllib.error
@@ -38,6 +45,14 @@ DROP_RATIO = 0.97
 # stock.json is rewritten at least this often so "checked" stays meaningful.
 HEARTBEAT = timedelta(hours=6)
 MAX_ALERTS = 10
+# Synced preferences (lib/data/services/user_prefs_service.dart in PokeBindr),
+# stored on users/{uid}.preferences under these literal keys.
+PREF_WATCH = "store401.watch"
+PREF_TOPIC = "store401.topic"
+PREF_CONDITIONS = "store401.conditions"
+DEFAULT_CONDITIONS = ("NM", "SP", "MP")
+# A topic is user-written data headed into a URL path.
+TOPIC_RE = re.compile(r"^[A-Za-z0-9_-]{8,64}$")
 
 
 class Blocked(Exception):
@@ -97,10 +112,10 @@ def read_conditions(product: dict) -> dict[str, dict]:
     return out
 
 
-def changes(item: dict, before: dict, now: dict) -> list[tuple[str, str]]:
-    """`(kind, line)` for every watched condition worth a notification."""
+def changes(before: dict, now: dict) -> list[tuple[str, str, str]]:
+    """`(kind, condition, line)` for every condition worth a notification."""
     out = []
-    for cond in item.get("conditions") or CONDITIONS:
+    for cond in CONDITIONS:
         n = now.get(cond)
         if not n or not n["in_stock"]:
             continue
@@ -108,12 +123,53 @@ def changes(item: dict, before: dict, now: dict) -> list[tuple[str, str]]:
         price = f"CA${n['price']:.2f}" if n["price"] is not None else "price —"
         count = f"{n['qty']} in stock" if n["qty"] is not None else "in stock"
         if p is None or not p["in_stock"]:
-            out.append(("restock", f"{cond} back in stock · {price} · {count}"))
+            out.append(("restock", cond, f"{cond} back in stock · {price} · {count}"))
         elif p["price"] and n["price"] and n["price"] < p["price"] * DROP_RATIO:
-            out.append(("drop", f"{cond} dropped CA${p['price']:.2f} → {price} · {count}"))
+            out.append(
+                ("drop", cond, f"{cond} dropped CA${p['price']:.2f} → {price} · {count}")
+            )
         elif (p["qty"] or 0) >= 2 and n["qty"] == 1:
-            out.append(("last", f"{cond} down to its last copy · {price}"))
+            out.append(("last", cond, f"{cond} down to its last copy · {price}"))
     return out
+
+
+def firestore_client():
+    """Firestore as the read-only service account, or None without its key."""
+    key = os.environ.get("FIREBASE_SERVICE_ACCOUNT", "").strip()
+    if not key:
+        return None
+    from google.cloud import firestore
+    from google.oauth2 import service_account
+
+    info = json.loads(key)
+    creds = service_account.Credentials.from_service_account_info(info)
+    return firestore.Client(project=info["project_id"], credentials=creds)
+
+
+def user_routes(db) -> dict[str, list[tuple[str, frozenset[str]]]]:
+    """`cardId -> [(topic, conditions)]` for every opted-in user's wishlist."""
+    from google.cloud.firestore_v1.base_query import FieldFilter
+    from google.cloud.firestore_v1.field_path import FieldPath
+
+    watching = FieldPath("preferences", PREF_WATCH).to_api_repr()
+    routes: dict[str, list[tuple[str, frozenset[str]]]] = {}
+    users = 0
+    for user in db.collection("users").where(filter=FieldFilter(watching, "==", True)).stream():
+        prefs = (user.to_dict() or {}).get("preferences") or {}
+        topic = prefs.get(PREF_TOPIC)
+        if not isinstance(topic, str) or not TOPIC_RE.match(topic):
+            continue
+        raw = prefs.get(PREF_CONDITIONS)
+        conditions = frozenset(
+            c for c in (raw if isinstance(raw, list) else DEFAULT_CONDITIONS) if c in CONDITIONS
+        )
+        users += 1
+        for doc in user.reference.collection("wishlist").stream():
+            row = doc.to_dict()
+            if row.get("cardId") and not row.get("deletedAt"):
+                routes.setdefault(row["cardId"], []).append((topic, conditions))
+    print(f"{users} users watching, {len(routes)} cards routed")
+    return routes
 
 
 def notify(topic: str, item: dict, lines: list[tuple[str, str]]) -> None:
@@ -171,8 +227,16 @@ def main() -> int:
 
     by_handle = {i["handle"]: i for i in watch}
     order = sorted(by_handle, key=lambda h: (state.get(h) or {}).get("checked") or "")
-    topic = os.environ.get("NTFY_TOPIC", "").strip()
+    store_topic = os.environ.get("NTFY_TOPIC", "").strip()
+    # A routing failure fails the run before any reading is recorded, so the
+    # next run sees the same change again rather than a silent miss.
+    db = firestore_client()
+    routes = user_routes(db) if db is not None else {}
+    if db is None:
+        print("::warning::FIREBASE_SERVICE_ACCOUNT unset — only NTFY_TOPIC is alerted")
+
     deadline = time.monotonic() + args.budget_minutes * 60
+    sent: dict[str, int] = {}
     alerts = checked = 0
     try:
         for handle in order[: args.max_items]:
@@ -187,19 +251,33 @@ def main() -> int:
                 continue
             now = read_conditions(product)
             if prev.get("checked") and prev.get("conditions") is not None:
-                lines = changes(item, prev["conditions"], now)
-                if lines:
-                    print(f"{handle}: " + "; ".join(l for _, l in lines))
-                    if topic and alerts < MAX_ALERTS:
+                news = changes(prev["conditions"], now)
+                if news:
+                    alerts += 1
+                    print(f"{handle}: " + "; ".join(line for _, _, line in news))
+                    targets = list(routes.get(item.get("card"), []))
+                    if store_topic and item.get("conditions"):
+                        targets.append((store_topic, frozenset(item["conditions"])))
+                    by_topic: dict[str, list[tuple[str, str]]] = {}
+                    for topic, wanted in targets:
+                        for kind, cond, line in news:
+                            if cond in wanted and (kind, line) not in by_topic.get(topic, []):
+                                by_topic.setdefault(topic, []).append((kind, line))
+                    for topic, lines in by_topic.items():
+                        if sent.get(topic, 0) >= MAX_ALERTS:
+                            continue
                         try:
                             notify(topic, item, lines)
+                            sent[topic] = sent.get(topic, 0) + 1
                         except Exception as e:  # noqa: BLE001 - never lose the reading
                             print(f"ntfy failed for {handle}: {e}", file=sys.stderr)
-                    alerts += 1
             state[handle] = {"checked": iso(utcnow()), "conditions": now, "gone": False}
     except Blocked:
         print("::warning::401 kept answering 429 — stopping this run early")
-    print(f"checked {checked} of {len(watch)} listings, {alerts} with news")
+    print(
+        f"checked {checked} of {len(watch)} listings, {alerts} with news, "
+        f"{sum(sent.values())} notifications to {len(sent)} topics"
+    )
 
     args.state.parent.mkdir(parents=True, exist_ok=True)
     args.state.write_text(json.dumps(state, separators=(",", ":")))
