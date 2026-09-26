@@ -1,5 +1,5 @@
 const CACHE_PREFIX = 'pokebindr-pwa-';
-const CACHE_NAME = `${CACHE_PREFIX}v14`;
+const CACHE_NAME = `${CACHE_PREFIX}v15`;
 const CORE_PATHS = [
   './',
   'index.html',
