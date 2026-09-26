@@ -1,0 +1,87 @@
+name: store-watch
+
+# Every 30 minutes: read the 401 Games listings on the PokeBindr watchlist and
+# push an ntfy notification on a restock or price drop. The watchlist itself is
+# published daily by the PokeBindr price-history job (price-history/401/ on
+# gh-pages). Runs here rather than in the private app repo because public-repo
+# Actions minutes are free.
+
+on:
+  schedule:
+    - cron: "7,37 * * * *"
+  workflow_dispatch:
+    inputs:
+      probe:
+        description: "Only fetch this 401 product handle and print it (connectivity check)"
+        default: ""
+
+permissions:
+  contents: write
+
+concurrency:
+  group: store-watch
+  cancel-in-progress: false
+
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      STATE: .store-watch-state/state.json
+    steps:
+      - name: Check out watcher
+        uses: actions/checkout@v4
+        with:
+          path: src
+          sparse-checkout: .github/store-watch
+
+      - name: Probe
+        if: inputs.probe != ''
+        run: python3 src/.github/store-watch/watch.py --site . --state /tmp/unused --probe "${{ inputs.probe }}"
+
+      - name: Check out site
+        if: inputs.probe == ''
+        uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+          path: site
+          sparse-checkout: price-history/401
+
+      - name: Restore state
+        if: inputs.probe == ''
+        uses: actions/cache/restore@v4
+        with:
+          path: .store-watch-state
+          key: store-watch-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: store-watch-
+
+      - name: Watch
+        if: inputs.probe == ''
+        env:
+          NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
+        run: python3 src/.github/store-watch/watch.py --site site/price-history/401 --state "$STATE"
+
+      - name: Save state
+        if: inputs.probe == '' && always()
+        uses: actions/cache/save@v4
+        with:
+          path: .store-watch-state
+          key: store-watch-${{ github.run_id }}-${{ github.run_attempt }}
+
+      - name: Commit stock.json
+        if: inputs.probe == ''
+        working-directory: site
+        run: |
+          git add price-history/401/stock.json 2>/dev/null || exit 0
+          if git diff --cached --quiet; then
+            echo "stock.json unchanged"; exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Update 401 stock"
+          # The price-history job pushes to gh-pages too.
+          for attempt in 1 2 3; do
+            git pull --rebase --quiet origin gh-pages && git push origin HEAD:gh-pages && exit 0
+            sleep $((attempt * 10))
+          done
+          exit 1
