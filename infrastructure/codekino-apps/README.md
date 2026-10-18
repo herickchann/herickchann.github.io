@@ -4,6 +4,7 @@ The app deployments remain on GitHub Pages. This Cloudflare Worker serves their 
 
 | App | Custom domain | Static origin folder |
 | --- | --- | --- |
+| App index | https://apps.codekino.org/ | https://herickchann.github.io/ (site root) |
 | Backloggy | https://backloggy.codekino.org/ | https://herickchann.github.io/backloggy/ |
 | PokeBindr | https://pokebindr.codekino.org/ | https://herickchann.github.io/bindr/ |
 | Panju | https://panju.codekino.org/ | https://herickchann.github.io/panju/ |
@@ -20,4 +21,6 @@ Authentication authorized domains must include each app's hostname in its own Fi
 
 The initial deployment was made through the signed-in Cloudflare dashboard. These files record that deployed source and configuration. Edit the `codekino-apps` Worker in the dashboard, or from this directory run `npx wrangler deploy` with an authorized Cloudflare login. Commit corresponding changes here so the stored configuration stays current. A Git push alone does not redeploy this Worker.
 
-Only the three listed custom domains belong to this service. The root domain and all other codekino.org records remain unchanged.
+The apps host passes the site root through unchanged, with no base-element rewrite and no single-page fallback, so unknown paths return a real 404. The GitHub Pages custom-domain setting on `herickchann.github.io` is deliberately left unset: setting it would redirect every `herickchann.github.io` path, including this Worker's upstream requests.
+
+Only the four Worker custom domains listed above belong to this service. The root domain and all other codekino.org records remain unchanged.

@@ -6,6 +6,7 @@
   "compatibility_date": "2026-10-18",
   "workers_dev": true,
   "routes": [
+    { "pattern": "apps.codekino.org", "custom_domain": true },
     { "pattern": "backloggy.codekino.org", "custom_domain": true },
     { "pattern": "pokebindr.codekino.org", "custom_domain": true },
     { "pattern": "panju.codekino.org", "custom_domain": true }
