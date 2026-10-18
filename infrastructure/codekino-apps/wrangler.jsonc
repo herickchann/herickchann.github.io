@@ -1,0 +1,13 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "codekino-apps",
+  "main": "worker.js",
+  "account_id": "b861e860ee282103a81da0fd422134a4",
+  "compatibility_date": "2026-10-18",
+  "workers_dev": true,
+  "routes": [
+    { "pattern": "backloggy.codekino.org", "custom_domain": true },
+    { "pattern": "pokebindr.codekino.org", "custom_domain": true },
+    { "pattern": "panju.codekino.org", "custom_domain": true }
+  ]
+}
