@@ -8,6 +8,7 @@
   "routes": [
     { "pattern": "apps.codekino.org", "custom_domain": true },
     { "pattern": "backloggy.codekino.org", "custom_domain": true },
+    { "pattern": "bindr.codekino.org", "custom_domain": true },
     { "pattern": "pokebindr.codekino.org", "custom_domain": true },
     { "pattern": "panju.codekino.org", "custom_domain": true }
   ]

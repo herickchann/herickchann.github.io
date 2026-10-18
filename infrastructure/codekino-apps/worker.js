@@ -3,13 +3,19 @@
 const APPS = Object.freeze({
   'apps.codekino.org': '/',
   'backloggy.codekino.org': '/backloggy/',
-  'pokebindr.codekino.org': '/bindr/',
+  'bindr.codekino.org': '/bindr/',
   'panju.codekino.org': '/panju/'
+});
+// Retired hostnames: permanently redirected to the app's current host.
+const MOVED = Object.freeze({
+  'pokebindr.codekino.org': 'bindr.codekino.org'
 });
 const ORIGIN = 'https://herickchann.github.io';
 export default {
   async fetch(request) {
     const incoming = new URL(request.url), prefix = APPS[incoming.hostname];
+    const moved = MOVED[incoming.hostname];
+    if (moved) { incoming.hostname = moved; return Response.redirect(incoming.href, 301); }
     if (!prefix) return new Response('Not found', {status:404});
     const isRoot = prefix === '/';
     if (!['GET','HEAD'].includes(request.method)) return new Response('Method not allowed', {status:405, headers:{Allow:'GET, HEAD'}});

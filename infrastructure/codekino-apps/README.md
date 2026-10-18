@@ -6,7 +6,7 @@ The app deployments remain on GitHub Pages. This Cloudflare Worker serves their 
 | --- | --- | --- |
 | App index | https://apps.codekino.org/ | https://herickchann.github.io/ (site root) |
 | Backloggy | https://backloggy.codekino.org/ | https://herickchann.github.io/backloggy/ |
-| PokeBindr | https://pokebindr.codekino.org/ | https://herickchann.github.io/bindr/ |
+| PokeBindr | https://bindr.codekino.org/ | https://herickchann.github.io/bindr/ |
 | Panju | https://panju.codekino.org/ | https://herickchann.github.io/panju/ |
 
 CADar is a separate GitHub Pages project with its native custom-domain setting pointing to https://cadar.codekino.org/. Its DNS-only CNAME targets `herickchann.github.io`.
@@ -23,4 +23,6 @@ The initial deployment was made through the signed-in Cloudflare dashboard. Thes
 
 The apps host passes the site root through unchanged, with no base-element rewrite and no single-page fallback, so unknown paths return a real 404. The GitHub Pages custom-domain setting on `herickchann.github.io` is deliberately left unset: setting it would redirect every `herickchann.github.io` path, including this Worker's upstream requests.
 
-Only the four Worker custom domains listed above belong to this service. The root domain and all other codekino.org records remain unchanged.
+`pokebindr.codekino.org` is retired: it stays attached to the Worker only to redirect (301) to `bindr.codekino.org`, keeping the path and query.
+
+Only the Worker custom domains listed above, plus that redirect, belong to this service. The root domain and all other codekino.org records remain unchanged.
