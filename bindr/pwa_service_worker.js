@@ -1,5 +1,5 @@
 const CACHE_PREFIX = 'pokebindr-pwa-';
-const CACHE_NAME = `${CACHE_PREFIX}v17`;
+const CACHE_NAME = `${CACHE_PREFIX}v19`;
 const CORE_PATHS = [
   './',
   'index.html',
@@ -28,7 +28,6 @@ const CORE_PATHS = [
   'assets/assets/google_fonts/IBMPlexMono-Medium.ttf',
   'assets/assets/google_fonts/IBMPlexMono-SemiBold.ttf',
   'assets/assets/icons/logo_mark.png',
-  'assets/assets/catalog/catalog_seed.db.gz',
 ];
 
 const scopedUrl = (path) => new URL(path, self.registration.scope).toString();
