@@ -1,5 +1,5 @@
 const CACHE_PREFIX = 'pokebindr-pwa-';
-const CACHE_NAME = `${CACHE_PREFIX}v19`;
+const CACHE_NAME = `${CACHE_PREFIX}v20`;
 const CORE_PATHS = [
   './',
   'index.html',
@@ -36,7 +36,13 @@ self.addEventListener('install', (event) => {
   event.waitUntil(
     caches
       .open(CACHE_NAME)
-      .then((cache) => cache.addAll(CORE_PATHS.map(scopedUrl)))
+      // A new shell must not copy an older release from the browser's HTTP
+      // cache into its new offline cache after a CDN deployment.
+      .then((cache) =>
+        cache.addAll(
+          CORE_PATHS.map((path) => new Request(scopedUrl(path), { cache: 'reload' })),
+        ),
+      )
       .then(() => self.skipWaiting()),
   );
 });
@@ -64,7 +70,8 @@ self.addEventListener('fetch', (event) => {
   if (url.origin !== self.location.origin) return;
 
   event.respondWith(
-    fetch(request)
+    // Revalidate online; a long browser cache TTL must not pin an old bundle.
+    fetch(request, { cache: 'no-cache' })
       .then((response) => {
         if (response.ok) {
           const copy = response.clone();
