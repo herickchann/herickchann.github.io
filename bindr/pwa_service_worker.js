@@ -1,5 +1,5 @@
 const CACHE_PREFIX = 'pokebindr-pwa-';
-const CACHE_NAME = `${CACHE_PREFIX}v21`;
+const CACHE_NAME = `${CACHE_PREFIX}v22`;
 const CORE_PATHS = [
   './',
   'index.html',
@@ -18,6 +18,7 @@ const CORE_PATHS = [
   'assets/FontManifest.json',
   'assets/fonts/MaterialIcons-Regular.otf',
   'assets/packages/cupertino_icons/assets/CupertinoIcons.ttf',
+  'assets/assets/fonts/NotoSansCJKjp-Regular.otf',
   'assets/assets/fonts/Phosphor-Bold.ttf',
   'assets/assets/fonts/Phosphor-Fill.ttf',
   'assets/assets/google_fonts/Archivo-Regular.ttf',
